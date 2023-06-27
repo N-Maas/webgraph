@@ -1283,8 +1283,6 @@ void graph::load_internal( string basename, int offset_step, std::ostream* log )
    // load a graph stored using " + props.getProperty( "graphclass" ) );
    
 //    ibitstream offset_ibs;
-   
-   ibitstream offset_ibs( basename + ".offsets", STD_BUFFER_SIZE );
 
 //    if ( offset_step > 0 ) 
 //       offset_ibs = ibitstream( basename + ".offsets", STD_BUFFER_SIZE );
@@ -1346,6 +1344,7 @@ void graph::load_internal( string basename, int offset_step, std::ostream* log )
       
       if ( offset_step == 1 ) {
          // read offsets, if required
+         ibitstream offset_ibs( basename + ".offsets", STD_BUFFER_SIZE );
          
          offset.resize( n + 1 );
          
