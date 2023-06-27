@@ -25,7 +25,7 @@
 
 #include "../utils/fast.hpp"
 
-#define LOGGING
+// #define LOGGING
 
 namespace webgraph {
 using namespace std;
@@ -409,7 +409,7 @@ int ibitstream::read_unary() {
    if ( fill < 8 ) 
       refill();
       
-#if 1
+#ifdef LOGGING
    cerr << "current: " << current << endl
         << "fill: " << fill << endl;
 #endif
@@ -425,7 +425,7 @@ int ibitstream::read_unary() {
 
       read_bits += x + 1;
       fill -= x + 1;
-#if 1
+#ifdef LOGGING
       cerr << "1. read_unary() = " << x << endl;
 #endif
       return x;
@@ -437,7 +437,7 @@ int ibitstream::read_unary() {
    x += 7 - ( fill = BYTEMSB[ current ] );
    read_bits += x + 1;
 
-#if 1
+#ifdef LOGGING
    cerr << "2. read_unary() = " << x << endl;
 #endif
    return x;
@@ -765,7 +765,7 @@ int ibitstream::read_zeta( int k ) {
          if ( pre_comp != 0 ) {
             read_bits += pre_comp >> 8;
             fill -= pre_comp >> 8;
-#if 1
+#ifdef LOGGING
             cerr << "\t1. read_zeta returning " << (pre_comp & 0xFF) << endl;
 #endif
             return pre_comp & 0xFF;
@@ -778,7 +778,7 @@ int ibitstream::read_zeta( int k ) {
    const int m = read_int( h * k + k - 1 );
    if ( m < left ) {
       int retval = m + left - 1;
-#if 1
+#ifdef LOGGING
       cerr << "\t2. read_zeta returning " << retval << endl;
 #endif
       return retval;
@@ -786,7 +786,7 @@ int ibitstream::read_zeta( int k ) {
 
    int retval = ( m << 1 ) + read_bit() - 1;
 
-#if 1
+#ifdef LOGGING
    cerr << "\t3. read_zeta returning " << retval << endl;
 #endif
    
