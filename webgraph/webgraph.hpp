@@ -67,6 +67,7 @@ private:
     */
    typedef boost::shared_ptr<utility_iterators::utility_iterator_base<int> > 
       internal_succ_itor_ptr;
+   typedef unsigned char byte;
 
    /** Scratch variables used by the {@link #diffComp(OutputBitStream, int, int, int[],
     * int, int[], int, boolean)} method. */
