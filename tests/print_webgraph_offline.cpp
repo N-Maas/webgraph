@@ -125,7 +125,8 @@ int main( int argc, char** argv ) {
          if (remove_degree_zero) {
             target = index_mapping[target];
          }
-         std::cout << target << " ";
+         // in metis format, indices start with 1
+         std::cout << (target + 1) << " ";
       }
       if (!remove_degree_zero || outgoing.size() > 0) {
          std::cout << std::endl;
